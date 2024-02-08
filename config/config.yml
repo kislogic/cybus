@@ -1,0 +1,39 @@
+# set environment variables from .env file using
+# export $(grep -v '^#' .env | xargs)
+
+server:
+  host: "${SERVER_HOST}"
+  port: "${SERVER_PORT}"
+  closeTimeout: "${CLOSE_TIMEOUT}"
+
+logger:
+  level: "${LOGGER_LEVEL}"
+
+database:
+  host: "${DB_HOST}"
+  dbName: "${DB_NAME}"
+  user: "${DB_USER}"
+  password: "${DB_PASSWORD}"
+  tls: true
+
+cache:
+  active: "redis"
+  redis:
+    address: "${REDIS_ADDRESS}"
+    password: ""
+    poolSize: 100
+
+otp:
+  active: "${ACTIVE_OTP_PROVIDER}"
+  mock:
+    referenceID: "uuid-v4-like-that"
+    pin: 777777
+
+migrations:
+  enabled: true
+  dialect: "mysql"
+  table: "goose_db_version"
+  directory: "migrations"
+  verbose: false
+
+
